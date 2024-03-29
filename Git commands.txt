@@ -1,0 +1,141 @@
+O SA FAC IN GIT BASH CA TERMINAL(ORICARE ALTUL MERGE: CMD, POWERSHELL,ETC.)
+
+Mai intai imi specific numele si adresa. Aste e important deoarece de fiecare data dau commit la ceva trebuie sa fie un autor(eu).
+Mai intai specific numele prin comanda: git config --global user.name "Numele meu scriu aici intre ghilimele" -> press Enter.
+Apoi specific adresa de email prin comanda: git config --global user.email adresaMeaDeEmailScriuAici ->Enter.
+
+Next, trebuie sa specific numele la branch-ul default.
+Comanda: git config --global init(SAU)initialize.default branch aiciScriuNumeleLaBranch(main de exemplu) -> Enter.
+
+Pana acum am folosit comanda 'git config'.
+
+Daca scriu comanda: git config -h apoi -> Enter -> o sa apara in terminal cum pot configura chestii.
+Daca vreau informatii mai detaliate(la config de ex.), scriu comanda: git help config ->Enter-> o sa imi deschida o pagina hosted de mine(deci merge si fara net) cu informatii.
+
+Ca sa fac terminalul 'curat', folosesc comanda: clear -> Enter.
+
+Ca sa schimb directoriul, comanda: cd(change directory) C:/Users/andre/OneDrive/Desktop/Practica/Git_Youtube
+Acum ca sa schimb asta intr-un git repositry, scriu: git init ->Enter.
+Inapoi in directoriul meu, nimic nu pare schimbat. Ca sa vad fisierul .git creat, ma duc in View->Show->Hidden Items(ceva in genul).
+
+Ca sa verific statusul unui repository, comanda: git status ->Enter.
+Fisiere untracked = daca fac schimbari la ele, lui Git nu o sa ii pese deoarece sunt untracked(neurmarite). Daca dau track la un file, Git o sa stie ce schimbari fac acelui fisier.
+Ca sa dau track unui fisier, folosesc comanda: git add numeFisier.extensiaLui scriu aici.
+Daca nu mai vreau sa fac tracking la un fisier, pot sa folosesc comanda: git rm(remove) --cached numeFisier.extensiaLui scriu aici.
+unstage=untrack;
+
+Daca vreau ca Git sa ignore un fisier, folder sau chiar extensii intregi, in File Explorer(unde sunt setat eu in terminal mai exact) voi crea un fisier text pe care il voi redenumii si ii voi modifica extensia in: .gitignore
+comment=folosesc simbolul '#' 
+Ca sa ignor toate fisiere cu extensia .txt: *.txt
+
+Ca sa fac tracking la toate fisierle, comanda: git add --all ->Enter
+SAU git add -A
+SAU git add .
+
+Commit=snapshot la repository in acest moment.(practic cum arata toate fisierel mele in acest moment)
+Ca sa fac commit, comanda: git commit -m "aiciPotSaScriuUnMesajPentruAcestCommit" ->Enter
+!!!COMMIT SE FACE DOAR LA FISIERELE TRACKED, LA CELE IGNORATE NU O SA SE FACA COMMIT!!!
+
+Acum daca modific un fisier si fac git status, Git va recunoaste ca unele dintre fisiere a fost modificat. Ca sa vad ce a fost modificat, Git are o comanda pentru asa ceva: git diff
+Daca vreau sa fac commit o sa trebuiasca sa fac git add mai intai. Dupa asta, fisierul sta acum in 'staging'. Staging= unde stau fisierele pana sunt gata sa le dau commit.
+In Git am 3 medii:
+1)Working Files = unde pot sa fac edit la fisiere
+2)Staging=unde stau fisierele pana sunt gata sa le dau commit(practic cum as tine un stilou in aer, inca nu scriu cu el, ma gandesc)
+3)Commit=snapshot la repository in acest moment.(practic cum arata toate fisierel mele in acest moment)
+Daca vreau sa ii fac remove la un fisier din staging(poate nu sunt pregatit sa ii dau commit inca), comanda: git restore --staged numeFisier.extensiaLui o scriu apoi ->Enter.
+Dupa ce fac asta, fisierul o sa fie dus inapoi la Working Files(deci daca as face commmit acum, acest fisier nu ar fi inclus deoarece acest fisier ete acum in mediul de lucru)
+
+Daca vreau sa fac bypass la staging&commit(in loc sa fac git add si dupa git commit -m), comanda: git commit -a -m "aiciScriuUnMesajCuCeS-aSchimbat" ->Enter.
+
+Daca vreau sa sterg un fisier, comanda: git rm "numeFisier.extensiaLui" ->Enter.
+SAU mai simplu il sterg efectiv din prima si direct dil File Explorer.
+Pot sa verific prin comanda git status schimbarile, ca sa fiu sigur.
+Daca vreau sa fac restore la fisier, comanda: git restore "numeFisier.extensiaLui" ->Enter.
+
+Daca vreau sa redenumesc un fisier din terminal, comanda: git mv(move=move from oldFile name to newFile name) "numeFisiervechi(original).extensiaLui" "numeFisierNou.extensiaLui" ->Enter.
+
+Daca vreau sa vad toate comiturile pe care le-am facut: git log ->Enter.
+Fiecare commit are un cod unic si sunt aratate de la cel mai recent pana la cel mai vechi.
+Daca vreau o versiune mai scurta(un rezumat), comanda: git log --oneline ->Enter.
+Ca sa modific mesajul de la un commit, comanda: git commit -m "cevaText" --amend ->Enter.
+Daca vreau sa vad mai detaliat ce s-a schimbat, comanda: git log -p ->Enter. Ca sa ies din acel view, pot sa apas Q.
+Daca vreau sa ma intorc la previous commits, comanda: git reset hashtag-ulSpecific.
+
+Daca vreau sa modific tot ce apare in logs si sa modific si ordinea in care apar aceste commituri, pot sa ma folosesc de 'rebasing', comanda: git rebase -i --root ->Enter.
+
+Daca vreau sa creez un nou branch, comanda: git branch numeBranch ->Enter.
+Ca sa vad branchurile, comanda: git branch.
+Branchul in care sunt mi se arata printr-un asteriv(*) pus inaintea numelui de branch.
+Ca sa fac switch(sa ma mut) in alt branch, comanda: git switch numeBranch ->Enter.
+Acum in File Explorer, in folderul meu, toate fisierele pe care le vad reflecta branchul FixTemp(de ex.).
+Dupa ce modific "secret recipe.htm" de exemplu, fac commit bypass prin: git commit -a -m "aiciScriuMesajulPentruAcestCommit" ->Enter.
+
+Ca sa fac merge la branches, comanda: git merge -m "aiciScriuMesajulMeu" apoiAiciScriuNumeleLaBranchulDeVreauSaFacMergeInMain ->Enter.
+
+Ca sa sterg un branch cand nu mai am nevoie de el, comanda: git branch -d numeBranch ->Enter.
+
+Merge Conflicts:
+Ca sa creez un branch si sa fac si switch direct pe acel branch, comanda: git switch -c(create) numeBranch ->Enter.
+Ca sa fac commit la ce am modificat: git commit -a -m "mesajLegatDeSchimbare"
+Pot sa fac merge si fara mesaj, comanda: git merge numeBranch ->Enter.
+Ar trebui sa am un merge conflict (numeBranch|MERGING). Ca sa il rezolv:
+1) Ma duc in File Explorer -> edit with notepad(ceva) fisierul respectiv.
+2) O sa vad un tex <<<<<HEAD = se refera la ce exista in acel branch.
+3) Dedesubt, dupa acele ======, o sa vad textul pe care incerc sa il aduc in acel branch.
+4) Pot sa ma decid pe care sa il pastrez. Daca vreau sa pastrez textul de la side-branch(de exemplu), sterg <<<<<Head, ====== si <<<<<<UpdateText si <p> respectiv.
+5) Acum ar trebui sa pot face commit fara conflicte.
+
+Acum ca sa lucrez cu altii, pot sa folosesc GitHub(o platforma de cloud storage populara).
+Creez un new repository, trec un nume, descrierea e optionala, aleg daca e private(aleg cine sa lucrezee) sau public, etc.
+
+
+PUSHING A LOCAL REPO TO GITHUB:
+
+Push an existing repository from the command line:
+1)git remote add origin https://github.com/Andrew256CRO/TutorialGitPracticaYoutube.com.git ->Enter.
+Asta stabileste o conexiune remote cu GitHub, iar aceasta conexiune se numeste 'origin'. Ce urmeaza dupa Origin, e adresa la care urmeaza sa ma conectez.
+2)Urmatoare comanda o sa seteze branchul pe main: git branch -M main
+3) Ca sa fac push la tot continutul meu local la cloud(pe GitHub), comanda: git push -u origin main
+4) Inapoi pe GitHub o sa observ ca a facut push doar la branchul pe care eram local. Ca sa fac push pe cloud la toate branchurile, comanda: git push --all ->Enter.
+
+Pe GitHub, pe repository ul meu, la Issues. Aici pot scrie feature requests sau cand cineva gaseste un bug. Pot sa introduc detaliile direct in aceasta pagina.
+Click pe New Issue -> ma joc cu ce e pe acolo. Dupa ce sunt gata, click pe Submit new issue.
+
+Pull requests: practic o cerere pentru cineva ca sa faca approve la merging in main. Inchide automat issue-ul.
+
+Release=V1 a site ului meu. Acum oricine poate sa descarce codul sursa.
+
+Acum ca schimbarile sa se reflecte si local(fetch and pull):
+Pot sa folosesc comanda git fetch = o sa descarce tot istoricul de la branchurile remote urmarite. Ca sa fac merge, comanda: git merge(o sa faca merge cu masina mea locala)
+SAU
+Pot sa scriu comanda: git pull ->Enter. Practic combina fetch si merge.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
